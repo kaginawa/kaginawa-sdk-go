@@ -1,0 +1,95 @@
+[
+  {
+    "id": "f0:18:98:eb:c7:27",
+    "trigger": 1,
+    "runtime": "darwin amd64",
+    "success": true,
+    "seq": 3,
+    "device_time": 1574010606,
+    "boot_time": 1574010543,
+    "gen_ms": 1483,
+    "agent_version": "v0.0.7",
+    "custom_id": "test-mac",
+    "ssh_server_host": "example.com",
+    "ssh_remote_port": 37937,
+    "ssh_connect_time": 1574010545,
+    "adapter": "en0",
+    "ip4_local": "192.168.1.6",
+    "ip6_local": "fe80::855:3cc9:4478:5898",
+    "hostname": "test-mac.local",
+    "rtt_ms": 1,
+    "upload_bps": 2271623,
+    "download_bps": 2020870,
+    "disk_total_bytes": 250685575168,
+    "disk_used_bytes": 211760967680,
+    "disk_label": "Macintosh HD",
+    "disk_filesystem": "APFS",
+    "disk_mount_point": "/",
+    "disk_device": "/dev/disk1s5",
+    "usb_devices": [
+      {
+        "name": "Realtek Semiconductor Corp. 4-Port USB 3.0 Hub",
+        "vendor_id": "0bda",
+        "product_id": "0411",
+        "location": "0x14700000 / 34"
+      },
+      {
+        "name": "Genesys Logic, Inc. USB3.0 Hub",
+        "vendor_id": "05e3",
+        "product_id": "0612",
+        "location": "0x14720000 / 33"
+      },
+      {
+        "name": "Realtek Semiconductor Corp. 4-Port USB 2.0 Hub",
+        "vendor_id": "0bda",
+        "product_id": "5411",
+        "location": "0x14600000 / 2"
+      },
+      {
+        "name": "Genesys Logic, Inc. USB2.0 Hub",
+        "vendor_id": "05e3",
+        "product_id": "0608",
+        "location": "0x14640000 / 6"
+      },
+      {
+        "name": "RATOC System Inc. USB KVM Switch rev.REX230/430UDA",
+        "vendor_id": "0584",
+        "product_id": "c2da",
+        "location": "0x14644000 / 9"
+      },
+      {
+        "name": "Holtek Semiconductor, Inc. USB Keyboard",
+        "vendor_id": "04d9",
+        "product_id": "4545",
+        "location": "0x14642000 / 13"
+      },
+      {
+        "name": "Kensington Kensington Slimblade Trackball",
+        "vendor_id": "047d",
+        "product_id": "2041",
+        "location": "0x14641000 / 12"
+      },
+      {
+        "name": "C-MEDIA ELECTRONICS INC. C-Media USB Headphone Set  ",
+        "vendor_id": "0d8c",
+        "product_id": "000c",
+        "location": "0x14630000 / 5"
+      },
+      {
+        "name": "Genesys Logic, Inc. USB2.0 Hub",
+        "vendor_id": "05e3",
+        "product_id": "0610",
+        "location": "0x14620000 / 4"
+      }
+    ],
+    "bd_local_devices": [
+      "F0:18:98:88:62:39"
+    ],
+    "payload": "{\"ip\":\"126.74.231.234\"}",
+    "payload_cmd": "curl https://api.ipify.org?format=json",
+    "ip_global": "[::1]",
+    "host_global": "[::1]",
+    "server_time": 1574010606,
+    "api_key": "test123"
+  }
+]
