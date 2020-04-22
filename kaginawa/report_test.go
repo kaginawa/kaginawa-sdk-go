@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func TestReport_Timestamp(t *testing.T) {
+func TestTimestamp(t *testing.T) {
 	tests := []struct {
 		input    Report
 		expected time.Time
@@ -27,7 +27,7 @@ func TestReport_Timestamp(t *testing.T) {
 	}
 }
 
-func TestReport_BootTimestamp(t *testing.T) {
+func TestBootTimestamp(t *testing.T) {
 	tests := []struct {
 		input    Report
 		expected time.Time

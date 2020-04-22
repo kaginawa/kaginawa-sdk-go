@@ -1,0 +1,106 @@
+[
+  {
+    "id": "b8:27:eb:36:83:e0",
+    "trigger": 3,
+    "runtime": "linux arm",
+    "success": true,
+    "seq": 16024,
+    "device_time": 1587337307,
+    "boot_time": 1584452171,
+    "gen_ms": 485,
+    "agent_version": "v0.0.7",
+    "custom_id": "test-rpi",
+    "ssh_server_host": "example.com",
+    "ssh_remote_port": 41383,
+    "ssh_connect_time": 1586975746,
+    "adapter": "wlan0",
+    "ip4_local": "192.168.1.13",
+    "ip6_local": "fe80::f533:507:a9e4:677d",
+    "hostname": "test-rpi.local",
+    "rtt_ms": 440,
+    "disk_total_bytes": 28970049536,
+    "disk_used_bytes": 1546936320,
+    "disk_filesystem": "ext4",
+    "disk_mount_point": "/",
+    "disk_device": "/dev/root",
+    "usb_devices": [
+      {
+        "name": "Standard Microsystems Corp. SMSC9512/9514 Fast Ethernet Adapter",
+        "vendor_id": "0424",
+        "product_id": "ec00",
+        "location": "Bus 001 Device 003"
+      },
+      {
+        "name": "Standard Microsystems Corp. SMC9514 Hub",
+        "vendor_id": "0424",
+        "product_id": "9514",
+        "location": "Bus 001 Device 002"
+      },
+      {
+        "name": "Linux Foundation 2.0 root hub",
+        "vendor_id": "1d6b",
+        "product_id": "0002",
+        "location": "Bus 001 Device 001"
+      }
+    ],
+    "bd_local_devices": [
+      "B8:27:EB:C9:7C:1F"
+    ],
+    "ip_global": "202.222.12.138",
+    "host_global": "ngn-nat1.v4.open.ad.jp",
+    "server_time": 1587337308,
+    "api_key": "test123"
+  },
+  {
+    "id": "b8:27:eb:36:83:e0",
+    "trigger": 3,
+    "runtime": "linux arm",
+    "success": true,
+    "seq": 16023,
+    "device_time": 1587336707,
+    "boot_time": 1584452171,
+    "gen_ms": 485,
+    "agent_version": "v0.0.7",
+    "custom_id": "test-rpi",
+    "ssh_server_host": "example.com",
+    "ssh_remote_port": 41383,
+    "ssh_connect_time": 1586975746,
+    "adapter": "wlan0",
+    "ip4_local": "192.168.1.13",
+    "ip6_local": "fe80::f533:507:a9e4:677d",
+    "hostname": "test-rpi.local",
+    "rtt_ms": 440,
+    "disk_total_bytes": 28970049536,
+    "disk_used_bytes": 1546936320,
+    "disk_filesystem": "ext4",
+    "disk_mount_point": "/",
+    "disk_device": "/dev/root",
+    "usb_devices": [
+      {
+        "name": "Standard Microsystems Corp. SMSC9512/9514 Fast Ethernet Adapter",
+        "vendor_id": "0424",
+        "product_id": "ec00",
+        "location": "Bus 001 Device 003"
+      },
+      {
+        "name": "Standard Microsystems Corp. SMC9514 Hub",
+        "vendor_id": "0424",
+        "product_id": "9514",
+        "location": "Bus 001 Device 002"
+      },
+      {
+        "name": "Linux Foundation 2.0 root hub",
+        "vendor_id": "1d6b",
+        "product_id": "0002",
+        "location": "Bus 001 Device 001"
+      }
+    ],
+    "bd_local_devices": [
+      "B8:27:EB:C9:7C:1F"
+    ],
+    "ip_global": "202.222.12.138",
+    "host_global": "ngn-nat1.v4.open.ad.jp",
+    "server_time": 1587336708,
+    "api_key": "test123"
+  }
+]
