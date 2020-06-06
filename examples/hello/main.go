@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kaginawa/kaginawa-sdk-go/kaginawa"
+	"github.com/kaginawa/kaginawa-sdk-go"
 )
 
 func main() {
