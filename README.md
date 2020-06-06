@@ -9,12 +9,6 @@ kaginawa-sdk-go
 
 The official [Kaginawa](https://github.com/kaginawa/kaginawa) SDK for the Go programming language.
 
-Subpackages:
-
-| Package | Description |
-| --- | --- |
-| kaginawa | [kaginawa-server](https://github.com/kaginawa/kaginawa-server) client library using REST API |
-
 ## Prerequisites
 
 - Go 1.14 or higher
@@ -22,12 +16,16 @@ Subpackages:
 ## Importing
 
 ```
-go get github.com/kaginawa/kaginawa-sdk-go/kaginawa
+go get github.com/kaginawa/kaginawa-sdk-go
 ```
 
-## Document
+## Documentation
 
 Online GoDoc is available on [godoc.org](https://godoc.org/github.com/kaginawa/kaginawa-sdk-go).
+
+## Examples
+
+See [examples/hello/main.go](examples/hello/main.go).
 
 ## License
 
