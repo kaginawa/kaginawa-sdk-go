@@ -58,8 +58,8 @@ type Report struct {
 	// Hostname is the hostname of the device.
 	Hostname string `json:"hostname"`
 
-	// RTTMills is the measured round trip time in milliseconds.
-	RTTMills int64 `json:"rtt_ms"`
+	// RTTMillis is the measured round trip time in milliseconds.
+	RTTMillis int64 `json:"rtt_ms"`
 
 	// UploadKBPS is the measured upload throughput in kbps.
 	UploadKBPS int64 `json:"upload_bps"`
