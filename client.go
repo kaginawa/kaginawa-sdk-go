@@ -65,6 +65,20 @@ func (c *Client) safeClose(closer io.Closer) {
 	c.closeError = closer.Close()
 }
 
+// FindNode finds a report by id.
+func (c *Client) FindNode(ctx context.Context, id string) (*Report, error) {
+	resp, err := c.request(ctx, http.MethodGet, c.endpoint+nodesResource+"/"+id, nil, http.StatusOK)
+	if err != nil {
+		return nil, err
+	}
+	defer c.safeClose(resp.Body)
+	var report Report
+	if err := json.NewDecoder(resp.Body).Decode(&report); err != nil {
+		return nil, fmt.Errorf("failed to decode response: %v", err)
+	}
+	return &report, nil
+}
+
 // ListAliveNodes queries list of all alive nodes.
 // It is considered alive if the last received time is within 5 minutes.
 func (c *Client) ListAliveNodes(ctx context.Context, thresholdMin int) ([]Report, error) {

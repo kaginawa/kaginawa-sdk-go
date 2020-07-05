@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 )
 
@@ -38,6 +39,45 @@ func TestNewClientWithEmptyAPIKey(t *testing.T) {
 	_, err := NewClient("http://localhost:3000", "")
 	if err == nil {
 		t.Error("expected error, got nil.")
+	}
+}
+
+func TestFindNode(t *testing.T) {
+	testID := "f0:18:98:eb:c7:27"
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		authorization := r.Header.Get("Authorization")
+		if authorization != "token "+testAPIKey {
+			w.WriteHeader(http.StatusUnauthorized)
+			t.Errorf("invalid api key: %s", authorization)
+			return
+		}
+		if !strings.HasSuffix(r.URL.Path, testID) {
+			w.WriteHeader(http.StatusNotFound)
+			t.Errorf("invalid path: %s", r.URL.Path)
+			return
+		}
+		expected, err := ioutil.ReadFile("testdata/node.json")
+		if err != nil {
+			t.Errorf("failed to initialize testdata: %v", err)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		if _, err := w.Write(expected); err != nil {
+			t.Errorf("failed to write testdata response: %v", err)
+			return
+		}
+	}))
+	defer ts.Close()
+	client, err := NewClient(ts.URL, testAPIKey)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	report, err := client.FindNode(context.Background(), testID)
+	if err != nil {
+		t.Fatalf("unexpexted error: %v", err)
+	}
+	if report.ID != testID {
+		t.Errorf("expected ID %s, got %s", testID, report.ID)
 	}
 }
 
