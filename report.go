@@ -91,6 +91,14 @@ type Report struct {
 	// BDLocalDevices is the list of detected bluetooth devices.
 	BDLocalDevices []string `json:"bd_local_devices"`
 
+	// KernelVersion is the kernel/OS version.
+	//
+	// Available since:
+	// - kaginawa v1.0.0
+	// - kaginawa-server v0.0.3
+	// - kaginawa-sdk-go v0.1.0
+	KernelVersion string `json:"kernel_version"`
+
 	// Errors is the list of report generation errors.
 	Errors []string `json:"errors"`
 
