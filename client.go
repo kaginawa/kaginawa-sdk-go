@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -50,7 +51,9 @@ func (c *Client) request(ctx context.Context, method, url string, body io.Reader
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Authorization", "token "+c.apiKey)
-	req.URL.Query()
+	if body != nil {
+		req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	}
 	resp, err := c.client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("failed to send request: %v", err)
@@ -147,4 +150,29 @@ func (c *Client) FindSSHServerByHostname(ctx context.Context, hostname string) (
 		return nil, fmt.Errorf("failed to decode response: %v", err)
 	}
 	return &server, nil
+}
+
+// Command submits a command to the node through Kaginawa Server.
+func (c *Client) Command(ctx context.Context, id, command, user, key, password string, timeoutSec int) (string, error) {
+	form := url.Values{"command": {command}, "user": {user}}
+	if len(key) > 0 {
+		form.Add("key", key)
+	}
+	if len(password) > 0 {
+		form.Add("password", password)
+	}
+	if timeoutSec > 0 {
+		form.Add("timeout", strconv.Itoa(timeoutSec))
+	}
+	body := strings.NewReader(form.Encode())
+	resp, err := c.request(ctx, http.MethodPost, c.endpoint+nodesResource+"/"+id+"/command", body, http.StatusOK)
+	if err != nil {
+		return "", err
+	}
+	defer c.safeClose(resp.Body)
+	result, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return "", fmt.Errorf("failed to read response: %v", err)
+	}
+	return string(result), nil
 }

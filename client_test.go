@@ -244,3 +244,37 @@ func TestFindSSHServerByHostname(t *testing.T) {
 		t.Errorf("Key expected %s, got %s", "(empty)", server.Key)
 	}
 }
+
+func TestCommand(t *testing.T) {
+	testID := "f0:18:98:eb:c7:27"
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		authorization := r.Header.Get("Authorization")
+		if authorization != "token "+testAPIKey {
+			w.WriteHeader(http.StatusUnauthorized)
+			t.Errorf("invalid api key: %s", authorization)
+			return
+		}
+		if !strings.Contains(r.URL.Path, testID) {
+			w.WriteHeader(http.StatusNotFound)
+			t.Errorf("invalid path: %s", r.URL.Path)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		if _, err := w.Write([]byte("success")); err != nil {
+			t.Errorf("failed to write testdata response: %v", err)
+			return
+		}
+	}))
+	defer ts.Close()
+	client, err := NewClient(ts.URL, testAPIKey)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	result, err := client.Command(context.Background(), testID, "echo \"success\"", "pi", "test key", "raspberry", 30)
+	if err != nil {
+		t.Fatalf("unexpexted error: %v", err)
+	}
+	if result != "success" {
+		t.Errorf("Command expected %s, got %s", "success", result)
+	}
+}
