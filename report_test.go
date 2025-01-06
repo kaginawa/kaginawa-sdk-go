@@ -1,6 +1,8 @@
 package kaginawa
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"testing"
 	"time"
 )
@@ -46,5 +48,22 @@ func TestBootTimestamp(t *testing.T) {
 		if d.expected != actual {
 			t.Errorf("test %d: BootTimestamp() expected %v, got %v", i, d.expected, actual)
 		}
+	}
+}
+
+func TestUnmarshalReport(t *testing.T) {
+	raw, err := ioutil.ReadFile("testdata/node.json")
+	if err != nil {
+		t.Fatalf("failed to initialize testdata: %v", err)
+	}
+	var report Report
+	if err = json.Unmarshal(raw, &report); err != nil {
+		t.Fatalf("failed to unmarshal testdata: %v", err)
+	}
+	if report.Payload != "{\"ip\":\"126.74.231.234\"}" {
+		t.Errorf("unexpected payload: %s", report.Payload)
+	}
+	if report.PayloadCmd != "curl https://api.ipify.org?format=json" {
+		t.Errorf("unexpected payload cmd: %s", report.PayloadCmd)
 	}
 }

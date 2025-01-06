@@ -102,6 +102,11 @@ type Report struct {
 	// Errors is the list of report generation errors.
 	Errors []string `json:"errors"`
 
+	// Payload is the output of the PayloadCmd
+	Payload string `json:"payload"`
+	// PayloadCmd is the executed payload command
+	PayloadCmd string `json:"payload_cmd"`
+
 	// GlobalIP is the global IP address.
 	// This is a server-side attribute.
 	GlobalIP string `json:"ip_global"`
